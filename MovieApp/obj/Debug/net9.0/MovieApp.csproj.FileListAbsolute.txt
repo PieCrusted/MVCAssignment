@@ -228,3 +228,5 @@
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/MovieApp/obj/Debug/net9.0/MovieApp.pdb
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/MovieApp/obj/Debug/net9.0/MovieApp.genruntimeconfig.cache
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/MovieApp/obj/Debug/net9.0/ref/MovieApp.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/MovieApp/obj/Debug/net9.0/MovieApp.sourcelink.json
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/MovieApp/bin/Debug/net9.0/secrets.json

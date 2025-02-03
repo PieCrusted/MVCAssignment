@@ -12,3 +12,4 @@
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/ApplicationCore/obj/Debug/net9.0/ApplicationCore.pdb
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/ApplicationCore/obj/Debug/net9.0/ApplicationCore.genruntimeconfig.cache
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/ApplicationCore/obj/Debug/net9.0/ref/ApplicationCore.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/ApplicationCore/obj/Debug/net9.0/ApplicationCore.sourcelink.json

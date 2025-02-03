@@ -149,3 +149,10 @@
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/obj/Debug/net9.0/Infrastructure.pdb
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/obj/Debug/net9.0/Infrastructure.genruntimeconfig.cache
 /Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/obj/Debug/net9.0/ref/Infrastructure.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/obj/Debug/net9.0/Infrastructure.sourcelink.json
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/bin/Debug/net9.0/Microsoft.Extensions.Configuration.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/bin/Debug/net9.0/Microsoft.Extensions.Configuration.FileExtensions.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/bin/Debug/net9.0/Microsoft.Extensions.Configuration.Json.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/bin/Debug/net9.0/Microsoft.Extensions.FileProviders.Abstractions.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/bin/Debug/net9.0/Microsoft.Extensions.FileProviders.Physical.dll
+/Users/michael/Desktop/AlphaTest/Antra/Rider/CSharp/Assignments/Infrastructure/bin/Debug/net9.0/Microsoft.Extensions.FileSystemGlobbing.dll

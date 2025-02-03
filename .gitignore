@@ -1,6 +1,6 @@
 # Compiled output
-/bin
-/obj
+**/bin
+**/obj
 /*.sln.DotSettings.user
 /*.suo
 
@@ -59,3 +59,6 @@ Thumbs.db
 # Solution and Project user options
 *.sln.DotSettings.user
 *.csproj.user
+
+# Secret Files
+secrets.json
