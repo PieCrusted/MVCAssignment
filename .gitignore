@@ -1,0 +1,61 @@
+# Compiled output
+/bin
+/obj
+/*.sln.DotSettings.user
+/*.suo
+
+# Rider files
+.idea/
+*.iml
+*.ipr
+*.iws
+/resharper-host/
+/resharper-settings-cache.bin
+/resharper-user-settings.bin
+
+# Build Results
+/Build/
+/Release/
+/Publish/
+
+# User-specific files
+*.userprefs
+*.user
+*.vspscc
+*.vssscc
+*.csproj.user
+
+# Package caches
+/packages/
+
+# Other
+*.log
+*.swp
+*.sqlite
+*.bak
+*.cache
+/node_modules
+/wwwroot/lib
+
+# Rider/Intellij Platform generated files
+*.DotSettings
+*.DotSettings.user
+*.DotSettings.userprefs
+*.DotSettings.user.xml
+*.idea
+*.iml
+*.ipr
+*.iws
+*.run.xml
+*.workspace
+.gradle
+/.gradle
+*.pid
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Solution and Project user options
+*.sln.DotSettings.user
+*.csproj.user
