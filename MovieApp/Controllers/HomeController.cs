@@ -1,7 +1,7 @@
-using System.Diagnostics;
+using ApplicationCore.Contracts.Services;
 using Microsoft.AspNetCore.Mvc;
 using MovieApp.Models;
-using ApplicationCore.Contracts.Services;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace MovieApp.Controllers {

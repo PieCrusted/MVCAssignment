@@ -1,9 +1,9 @@
 using ApplicationCore.Contracts.Repository;
-using ApplicationCore.Entities;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Data;
 
 namespace Infrastructure.Repository {
-    public class CastRepository : BaseRepository<Cast>, ICastRepository {
-        public CastRepository(DbContext dbContext) : base(dbContext) { }
+    public class CastRepository : BaseRepository<ApplicationCore.Entities.Cast>, ICastRepository {
+        public CastRepository(MovieShopDbContext dbContext) : base(dbContext) { }
     }
 }

@@ -1,5 +1,13 @@
+using ApplicationCore.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace ApplicationCore.Contracts.Services {
     public interface IGenreService {
-        // methods
+        Task<List<Genre>> GetAllGenres();
+        Task<Genre> GetGenreById(int id);
+        Task<bool> CreateGenre(string name);
+        Task<bool> UpdateGenre(int id, string name);
+        Task<bool> DeleteGenre(int id);
     }
 }

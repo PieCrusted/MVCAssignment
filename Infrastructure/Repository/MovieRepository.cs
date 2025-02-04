@@ -1,9 +1,9 @@
 using ApplicationCore.Contracts.Repository;
-using ApplicationCore.Entities;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Data;
 
 namespace Infrastructure.Repository {
-    public class MovieRepository : BaseRepository<Movie>, IMovieRepository {
-        public MovieRepository(DbContext dbContext) : base(dbContext) { }
+    public class MovieRepository : BaseRepository<ApplicationCore.Entities.Movie>, IMovieRepository {
+        public MovieRepository(MovieShopDbContext dbContext) : base(dbContext) { }
     }
 }

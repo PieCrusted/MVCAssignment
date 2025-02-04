@@ -1,49 +1,22 @@
-// namespace MovieApp;
-//
-// public class Program {
-//     public static void Main(string[] args) {
-//         var builder = WebApplication.CreateBuilder(args);
-//
-//         // Add services to the container.
-//         builder.Services.AddControllersWithViews();
-//
-//         var app = builder.Build();
-//
-//         // Configure the HTTP request pipeline.
-//         if (!app.Environment.IsDevelopment()) {
-//             app.UseExceptionHandler("/Home/Error");
-//             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-//             app.UseHsts();
-//         }
-//
-//         app.UseHttpsRedirection();
-//         app.UseRouting();
-//
-//         app.UseAuthorization();
-//
-//         app.MapStaticAssets();
-//         app.MapControllerRoute(
-//                 name: "default",
-//                 pattern: "{controller=Home}/{action=Index}/{id?}")
-//             .WithStaticAssets();
-//
-//         app.Run();
-//     }
-// }
-
-using ApplicationCore.Contracts.Services;
-using Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MovieApp.Models;
+using ApplicationCore.Contracts.Services;
+using Infrastructure.Services;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using ApplicationCore.Contracts.Repository;
+using Infrastructure.Repository;
+using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+// AddRazorRuntimeCompilation gives capabilitie for real time updates when file changes, but is much slower to build
+// Not doing AddRazorRuntimeCompilation would mean I will have to refresh build each time to see live changes from file.
+// builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddScoped<IMovieService, MovieService>();
 
 // Add Db Context
@@ -57,7 +30,25 @@ builder.Services.AddDbContext<MovieShopDbContext>(options =>
     .Replace("<secret_key>", configuration.GetConnectionString("MovieShopDbPassword")))
 );
 
+// Register Repositories
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICastRepository, CastRepository>();
+builder.Services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+builder.Services.AddScoped<IReportRepository, ReportRepository>();
+builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+
+// Register Services
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddScoped<ICastService, CastService>();
+
 var app = builder.Build();
+
+// Seed the database
+MovieShopDbInitializer.Seed(app.Services);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

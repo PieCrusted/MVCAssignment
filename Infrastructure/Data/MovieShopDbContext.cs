@@ -10,5 +10,6 @@ namespace Infrastructure.Data {
         public DbSet<Cast> Casts { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Genre> Genres { get; set; }
     }
 }

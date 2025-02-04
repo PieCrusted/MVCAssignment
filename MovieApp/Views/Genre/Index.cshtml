@@ -1,0 +1,24 @@
+@model List<ApplicationCore.Entities.Genre>
+
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<h1>Genres</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var genre in Model) {
+            <tr>
+                <td>@genre.Id</td>
+                <td>@genre.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

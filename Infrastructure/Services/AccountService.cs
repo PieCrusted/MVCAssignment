@@ -1,7 +1,12 @@
 using ApplicationCore.Contracts.Services;
+using ApplicationCore.Contracts.Repository;
 
 namespace Infrastructure.Services {
     public class AccountService : IAccountService {
-        // Add Account service method here
+        private readonly IUserRepository _userRepository;
+
+        public AccountService(IUserRepository userRepository) {
+            _userRepository = userRepository;
+        }
     }
 }

@@ -1,12 +1,13 @@
 using ApplicationCore.Contracts.Repository;
+using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repository {
     public class BaseRepository<T> : IBaseRepository<T> where T : class {
-        protected readonly DbContext _dbContext;
-        public BaseRepository(DbContext dbContext) {
+        protected readonly MovieShopDbContext _dbContext;
+        public BaseRepository(MovieShopDbContext dbContext) {
             _dbContext = dbContext;
         }
         public virtual async Task<T> GetByIdAsync(int id) {
