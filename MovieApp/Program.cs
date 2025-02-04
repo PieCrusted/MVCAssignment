@@ -15,8 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // AddRazorRuntimeCompilation gives capabilitie for real time updates when file changes, but is much slower to build
 // Not doing AddRazorRuntimeCompilation would mean I will have to refresh build each time to see live changes from file.
-// builder.Services.AddControllersWithViews();
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews();
+// builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddScoped<IMovieService, MovieService>();
 
 // Add Db Context

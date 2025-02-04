@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ApplicationCore.Models.MovieCardModel>
+﻿@model IEnumerable<ApplicationCore.Entities.Movie>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,11 +6,13 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://www.livechart.me/rankings/anime">Top Rated Anime</a>.</p>
     <div class="movie-list">
         @foreach (var movie in Model)
         {
-            <partial name="_MovieCard" model="movie" />
+            <div class="movie-card">
+                <img src="@movie.PosterUrl" alt="@movie.Title" class="movie-poster" />
+                <h3 class="movie-title">@movie.Title</h3>
+            </div>
         }
     </div>
 </div>

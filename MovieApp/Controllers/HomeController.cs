@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MovieApp.Models;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using ApplicationCore.Entities;
 
 namespace MovieApp.Controllers {
     public class HomeController : Controller {
