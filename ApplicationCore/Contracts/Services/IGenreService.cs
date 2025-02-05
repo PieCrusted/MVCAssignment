@@ -9,5 +9,6 @@ namespace ApplicationCore.Contracts.Services {
         Task<bool> CreateGenre(string name);
         Task<bool> UpdateGenre(int id, string name);
         Task<bool> DeleteGenre(int id);
+        Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageSize = 30, int page = 1);
     }
 }

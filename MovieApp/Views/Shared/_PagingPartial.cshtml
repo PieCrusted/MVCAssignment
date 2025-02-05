@@ -1,0 +1,23 @@
+@model ApplicationCore.Models.MoviesByGenreModel
+
+@{
+    int totalPages = (int)Math.Ceiling((decimal)Model.TotalCount / Model.PageSize);
+    int currentPage = Model.Page;
+    int genreId = Model.GenreId;
+}
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" asp-controller="Movies" asp-action="Genre" asp-route-genreId="@genreId" asp-route-page="@(currentPage > 1 ? currentPage - 1 : currentPage)" asp-route-pageSize="@Model.PageSize">Previous</a>
+        </li>
+        
+        <li class="page-item active disabled">
+             <span class="page-link">@currentPage</span>
+        </li>
+
+        <li class="page-item">
+            <a class="page-link" asp-controller="Movies" asp-action="Genre" asp-route-genreId="@genreId" asp-route-page="@(currentPage + 1)" asp-route-pageSize="@Model.PageSize">Next</a>
+        </li>
+    </ul>
+</nav>

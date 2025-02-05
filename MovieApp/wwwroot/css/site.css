@@ -56,3 +56,31 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.bg-custom {
+    background-color: #333940 !important;
+}
+
+.card {
+    border-radius: 15px;
+    border: none;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0069d9;
+        border-color: #0062cc;
+    }
+
+body {
+    background-color: #f8f9fa;
+}
+

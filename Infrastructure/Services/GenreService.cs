@@ -3,13 +3,18 @@ using ApplicationCore.Contracts.Services;
 using ApplicationCore.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using ApplicationCore.Models;
 
 namespace Infrastructure.Services {
     public class GenreService : IGenreService {
         private readonly IGenreRepository _genreRepository;
+        private readonly IMovieRepository _movieRepository;
 
-        public GenreService(IGenreRepository genreRepository) {
+        public GenreService(IGenreRepository genreRepository, IMovieRepository movieRepository) {
             _genreRepository = genreRepository;
+            _movieRepository = movieRepository;
         }
 
         public async Task<List<Genre>> GetAllGenres() {
@@ -37,6 +42,10 @@ namespace Infrastructure.Services {
         public async Task<bool> DeleteGenre(int id) {
             await _genreRepository.DeleteAsync(id);
             return true;
+        }
+
+        public async Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageSize = 30, int page = 1) {
+            return await _genreRepository.GetMoviesByGenre(genreId, pageSize, page);
         }
     }
 }
