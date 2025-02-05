@@ -7,14 +7,16 @@ using ApplicationCore.Entities;
 using System.Threading;
 using System.Reflection;
 using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace Infrastructure {
     public static class MovieShopDbInitializer {
         private const string ExecutedScriptsFileName = "executed_scripts.txt";
+
         public static void Seed(IServiceProvider serviceProvider) {
-            var scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
-            using (var scope = scopeFactory.CreateScope()) {
+            using (var scope = serviceProvider.CreateScope()) {
                 var dbContext = scope.ServiceProvider.GetRequiredService<MovieShopDbContext>();
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<MovieShopDbContext>>();
                 int retryCount = 3;
                 TimeSpan retryInterval = TimeSpan.FromSeconds(5);
 
@@ -31,41 +33,36 @@ namespace Infrastructure {
                     }
                 }
 
-                // Execute SQL scripts
-                var assembly = Assembly.GetExecutingAssembly();
-                var scriptNames = assembly.GetManifestResourceNames();
-                var executedScripts = GetExecutedScripts();
+                var emptyTables = new List<string>();
 
-                foreach (var scriptName in scriptNames) {
-                    if (scriptName.EndsWith(".sql") && !executedScripts.Contains(scriptName)) {
-                        using (var stream = assembly.GetManifestResourceStream(scriptName))
-                        using (var reader = new StreamReader(stream)) {
-                            var sqlScript = reader.ReadToEnd();
-                            dbContext.Database.ExecuteSqlRaw(sqlScript);
-                            MarkScriptAsExecuted(scriptName);
-                        }
-                    }
+                if (!dbContext.Genres.Any()) {
+                    emptyTables.Add("Genres");
                 }
-                dbContext.SaveChanges();
+
+                if (!dbContext.Movies.Any()) {
+                    emptyTables.Add("Movies");
+                }
+
+                if (!dbContext.MovieGenres.Any()) {
+                    emptyTables.Add("MovieGenres");
+                }
+
+                if (!dbContext.Casts.Any()) {
+                    emptyTables.Add("Casts");
+                }
+
+                if (!dbContext.MovieCasts.Any()) {
+                    emptyTables.Add("MovieCasts");
+                }
+
+                if (!dbContext.Trailers.Any()) {
+                    emptyTables.Add("Trailers");
+                }
+
+                if (emptyTables.Any()) {
+                    logger.LogWarning($"The following tables are empty: {string.Join(", ", emptyTables)}. Please populate them manually using the SQL scripts from the /Scripts folder.");
+                }
             }
-        }
-        private static string GetExecutedScriptsFilePath() {
-            var basePath = AppDomain.CurrentDomain.BaseDirectory;
-            return Path.Combine(basePath, ExecutedScriptsFileName);
-        }
-        private static List<string> GetExecutedScripts() {
-            var filePath = GetExecutedScriptsFilePath();
-
-            if (!File.Exists(filePath)) {
-                return new List<string>();
-            }
-
-            return File.ReadAllLines(filePath).ToList();
-        }
-
-        private static void MarkScriptAsExecuted(string scriptName) {
-            var filePath = GetExecutedScriptsFilePath();
-            File.AppendAllText(filePath, scriptName + Environment.NewLine);
         }
     }
 }

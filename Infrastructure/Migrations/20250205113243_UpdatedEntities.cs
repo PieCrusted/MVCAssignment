@@ -17,10 +17,10 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TmdbUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Gender = table.Column<string>(type: "nvarchar(MAX)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    ProfilePath = table.Column<string>(type: "nvarchar(2084)", nullable: false),
+                    TmdbUrl = table.Column<string>(type: "nvarchar(MAX)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,7 +47,7 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(24)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,7 +61,7 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CastId = table.Column<int>(type: "int", nullable: false),
-                    Character = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Character = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     MovieId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -89,23 +89,23 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BackdropUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Budget = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ImdbUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OriginalLanguage = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Overview = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PosterUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(5,2)", nullable: false),
-                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Revenue = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
-                    RunTime = table.Column<int>(type: "int", nullable: false),
-                    Tagline = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TmdbUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    BackdropUrl = table.Column<string>(type: "nvarchar(2084)", nullable: true),
+                    Budget = table.Column<decimal>(type: "decimal(18,4)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(MAX)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ImdbUrl = table.Column<string>(type: "nvarchar(2084)", nullable: true),
+                    OriginalLanguage = table.Column<string>(type: "nvarchar(64)", nullable: true),
+                    Overview = table.Column<string>(type: "nvarchar(MAX)", nullable: true),
+                    PosterUrl = table.Column<string>(type: "nvarchar(2084)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(5,2)", nullable: true),
+                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Revenue = table.Column<decimal>(type: "decimal(18,4)", nullable: true),
+                    RunTime = table.Column<int>(type: "int", nullable: true),
+                    Tagline = table.Column<string>(type: "nvarchar(512)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(256)", nullable: true),
+                    TmdbUrl = table.Column<string>(type: "nvarchar(2084)", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(MAX)", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -138,8 +138,8 @@ namespace Infrastructure.Migrations
                     MovieId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Rating = table.Column<decimal>(type: "decimal(4,2)", nullable: false),
-                    ReviewText = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Rating = table.Column<decimal>(type: "decimal(3,2)", nullable: false),
+                    ReviewText = table.Column<string>(type: "nvarchar(MAX)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -152,7 +152,7 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(20)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -166,8 +166,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MovieId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TrailerUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(2084)", nullable: false),
+                    TrailerUrl = table.Column<string>(type: "nvarchar(2084)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -194,15 +194,15 @@ namespace Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HashedPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsLocked = table.Column<bool>(type: "bit", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfilePictureUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Salt = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    HashedPassword = table.Column<string>(type: "nvarchar(1024)", nullable: false),
+                    IsLocked = table.Column<bool>(type: "bit", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(128)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(16)", nullable: true),
+                    ProfilePictureUrl = table.Column<string>(type: "nvarchar(MAX)", nullable: true),
+                    Salt = table.Column<string>(type: "nvarchar(1024)", nullable: false)
                 },
                 constraints: table =>
                 {
