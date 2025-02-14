@@ -9,7 +9,7 @@ namespace Infrastructure.Repository {
         public GenreRepository(MovieShopDbContext dbContext) : base(dbContext) {
             _dbContext = dbContext;
         }
-        public async Task<List<Movie>> GetMoviesByGenre(int genreId, int pageSize = 30, int page = 1) {
+        public async Task<List<Movie>> GetMoviesByGenreAsync(int genreId, int pageSize = 30, int page = 1) {
             return await _dbContext.MovieGenres
                 .Where(mg => mg.GenreId == genreId)
                 .Select(mg => mg.MovieId)

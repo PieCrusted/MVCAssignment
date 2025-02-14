@@ -16,7 +16,7 @@ namespace MovieApp.Controllers {
         }
 
         public async Task<IActionResult> Index() {
-            var movies = await _movieService.GetTop30HighestGrossingMovies();
+            var movies = await _movieService.GetTop30HighestGrossingMoviesAsync();
             return View(movies);
         }
 

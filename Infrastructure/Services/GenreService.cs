@@ -17,21 +17,21 @@ namespace Infrastructure.Services {
             _movieRepository = movieRepository;
         }
 
-        public async Task<List<Genre>> GetAllGenres() {
+        public async Task<List<Genre>> GetAllGenresAsync() {
             return (List<Genre>)await _genreRepository.GetAllAsync();
         }
 
-        public async Task<Genre> GetGenreById(int id) {
+        public async Task<Genre> GetGenreByIdAsync(int id) {
             return await _genreRepository.GetByIdAsync(id);
         }
 
-        public async Task<bool> CreateGenre(string name) {
+        public async Task<bool> CreateGenreAsync(string name) {
             var genre = new Genre { Name = name };
             await _genreRepository.AddAsync(genre);
             return true;
         }
 
-        public async Task<bool> UpdateGenre(int id, string name) {
+        public async Task<bool> UpdateGenreAsync(int id, string name) {
             var genre = await _genreRepository.GetByIdAsync(id);
             if (genre == null) return false;
             genre.Name = name;
@@ -39,13 +39,13 @@ namespace Infrastructure.Services {
             return true;
         }
 
-        public async Task<bool> DeleteGenre(int id) {
+        public async Task<bool> DeleteGenreAsync(int id) {
             await _genreRepository.DeleteAsync(id);
             return true;
         }
 
-        public async Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageSize = 30, int page = 1) {
-            return await _genreRepository.GetMoviesByGenre(genreId, pageSize, page);
+        public async Task<IEnumerable<Movie>> GetMoviesByGenreAsync(int genreId, int pageSize = 30, int page = 1) {
+            return await _genreRepository.GetMoviesByGenreAsync(genreId, pageSize, page);
         }
     }
 }

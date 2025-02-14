@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Contracts.Services {
     public interface IGenreService {
-        Task<List<Genre>> GetAllGenres();
-        Task<Genre> GetGenreById(int id);
-        Task<bool> CreateGenre(string name);
-        Task<bool> UpdateGenre(int id, string name);
-        Task<bool> DeleteGenre(int id);
-        Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageSize = 30, int page = 1);
+        Task<List<Genre>> GetAllGenresAsync();
+        Task<Genre> GetGenreByIdAsync(int id);
+        Task<bool> CreateGenreAsync(string name);
+        Task<bool> UpdateGenreAsync(int id, string name);
+        Task<bool> DeleteGenreAsync(int id);
+        Task<IEnumerable<Movie>> GetMoviesByGenreAsync(int genreId, int pageSize = 30, int page = 1);
     }
 }

@@ -12,7 +12,7 @@
 <header>
     @inject ApplicationCore.Contracts.Services.IGenreService GenreService
     @{
-        var genres = await GenreService.GetAllGenres();
+        var genres = await GenreService.GetAllGenresAsync();
     }
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
         <div class="container-fluid">

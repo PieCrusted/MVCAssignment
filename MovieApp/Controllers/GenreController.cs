@@ -11,7 +11,7 @@ namespace MovieApp.Controllers {
 
         [HttpGet]
         public async Task<IActionResult> Index() {
-            var genres = await _genreService.GetAllGenres();
+            var genres = await _genreService.GetAllGenresAsync();
             return View(genres);
         }
     }

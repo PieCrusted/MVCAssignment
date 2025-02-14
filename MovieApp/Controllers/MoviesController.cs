@@ -24,9 +24,9 @@ namespace MovieApp.Controllers {
             return View();
         }
         public async Task<IActionResult> Genre(int genreId, int pageSize = 30, int page = 1) {
-            var movies = await _genreService.GetMoviesByGenre(genreId, pageSize, page);
-            var genre = await _genreService.GetGenreById(genreId);
-            var totalMovies = (await _genreRepository.GetMoviesByGenre(genreId)).Count();
+            var movies = await _genreService.GetMoviesByGenreAsync(genreId, pageSize, page);
+            var genre = await _genreService.GetGenreByIdAsync(genreId);
+            var totalMovies = (await _genreRepository.GetMoviesByGenreAsync(genreId)).Count();
             var model = new MoviesByGenreModel {
                 GenreId = genreId,
                 PageSize = pageSize,

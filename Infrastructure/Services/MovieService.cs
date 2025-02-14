@@ -10,7 +10,7 @@ namespace Infrastructure.Services {
         public MovieService(IMovieRepository movieRepository) {
             _movieRepository = movieRepository;
         }
-        public async Task<IEnumerable<Movie>> GetTop30HighestGrossingMovies() {
+        public async Task<IEnumerable<Movie>> GetTop30HighestGrossingMoviesAsync() {
             var movies = await _movieRepository.GetAllAsync();
             var movieCards = movies.Select(m => new Movie {
                 Id = m.Id,
@@ -19,7 +19,7 @@ namespace Infrastructure.Services {
             });
             return movieCards;
         }
-        public async Task<Movie> GetMovieDetails(int movieId) {
+        public async Task<Movie> GetMovieDetailsAsync(int movieId) {
             var movie = await _movieRepository.GetByIdAsync(movieId);
             var movieCard = new Movie {
                 Id = movie.Id,
