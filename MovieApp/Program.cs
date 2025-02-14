@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using ApplicationCore.Contracts.Repository;
 using Infrastructure.Repository;
 using Infrastructure;
+using MovieApp.ViewComponents;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,8 @@ builder.Services.AddScoped<IMovieGenresRepository, MovieGenresRepository>();
 builder.Services.AddScoped<IUserRolesRepository, UserRolesRepository>();
 builder.Services.AddScoped<IRolesRepository, RolesRepository>();
 builder.Services.AddScoped<IFavoritesRepository, FavoritesRepository>();
+builder.Services.AddScoped<ICrewRepository, CrewRepository>();
+builder.Services.AddScoped<IMovieCrewRepository, MovieCrewRepository>();
 
 // Register Services
 builder.Services.AddScoped<IUserService, UserService>();
@@ -50,7 +53,9 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<ICastService, CastService>();
-builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+
+// Add view compoenents
+builder.Services.AddScoped<GenresViewComponent>();
 
 var app = builder.Build();
 

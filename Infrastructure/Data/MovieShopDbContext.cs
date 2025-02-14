@@ -5,6 +5,7 @@ namespace Infrastructure.Data {
     public class MovieShopDbContext : DbContext {
         public MovieShopDbContext(DbContextOptions<MovieShopDbContext> options) : base(options) { }
 
+        // DbSet properties for all entities
         public DbSet<Movie> Movies { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Cast> Casts { get; set; }
@@ -17,8 +18,13 @@ namespace Infrastructure.Data {
         public DbSet<UserRoles> UserRoles { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Favorites> Favorites { get; set; }
+        public DbSet<Crew> Crews { get; set; }
+        public DbSet<MovieCrew> MovieCrews { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            // Existing Entities
+
             // Movies
             modelBuilder.Entity<Movie>().Property(m => m.BackdropUrl).HasColumnType("nvarchar(2084)").IsRequired(false);
             modelBuilder.Entity<Movie>().Property(m => m.Budget).HasColumnType("decimal(18, 4)").IsRequired(false);
@@ -41,10 +47,10 @@ namespace Infrastructure.Data {
             modelBuilder.Entity<Genre>().Property(g => g.Name).HasColumnType("nvarchar(24)");
 
             // Casts
-            modelBuilder.Entity<Cast>().Property(c => c.Gender).HasColumnType("nvarchar(MAX)");
-            modelBuilder.Entity<Cast>().Property(c => c.Name).HasColumnType("nvarchar(128)");
-            modelBuilder.Entity<Cast>().Property(c => c.ProfilePath).HasColumnType("nvarchar(2084)");
-            modelBuilder.Entity<Cast>().Property(c => c.TmdbUrl).HasColumnType("nvarchar(MAX)");
+            modelBuilder.Entity<Cast>().Property(c => c.Gender).HasColumnType("nvarchar(MAX)").IsRequired(false);
+            modelBuilder.Entity<Cast>().Property(c => c.Name).HasColumnType("nvarchar(128)").IsRequired(false);
+            modelBuilder.Entity<Cast>().Property(c => c.ProfilePath).HasColumnType("nvarchar(2084)").IsRequired(false);
+            modelBuilder.Entity<Cast>().Property(c => c.TmdbUrl).HasColumnType("nvarchar(MAX)").IsRequired(false);
 
             // Users
             modelBuilder.Entity<User>().Property(u => u.DateOfBirth).HasColumnType("datetime2").IsRequired(false);
@@ -63,8 +69,8 @@ namespace Infrastructure.Data {
             modelBuilder.Entity<Purchase>().Property(p => p.TotalPrice).HasColumnType("decimal(5, 2)");
 
             // Trailers
-            modelBuilder.Entity<Trailers>().Property(t => t.Name).HasColumnType("nvarchar(2084)");
-            modelBuilder.Entity<Trailers>().Property(t => t.TrailerUrl).HasColumnType("nvarchar(2084)");
+            modelBuilder.Entity<Trailers>().Property(t => t.Name).HasColumnType("nvarchar(2084)").IsRequired(false);
+            modelBuilder.Entity<Trailers>().Property(t => t.TrailerUrl).HasColumnType("nvarchar(2084)").IsRequired(false);
 
             // Reviews
             modelBuilder.Entity<Reviews>().Property(r => r.CreatedDate).HasColumnType("datetime2");
@@ -72,10 +78,29 @@ namespace Infrastructure.Data {
             modelBuilder.Entity<Reviews>().Property(r => r.ReviewText).HasColumnType("nvarchar(MAX)");
 
             //MovieCasts
-            modelBuilder.Entity<MovieCasts>().Property(r => r.Character).HasColumnType("nvarchar(450)");
+            modelBuilder.Entity<MovieCasts>().Property(r => r.Character).HasColumnType("nvarchar(450)").IsRequired(false);
 
             // Roles
             modelBuilder.Entity<Roles>().Property(r => r.Name).HasColumnType("nvarchar(20)");
+
+            //New Entities
+            // Role
+            modelBuilder.Entity<Role>().Property(r => r.Name).HasColumnType("nvarchar(20)").IsRequired(false);
+
+            // UserRole
+            // All IDS are required
+
+            // Favorite
+            // All IDS are required
+
+            // Crew
+            modelBuilder.Entity<Crew>().Property(c => c.Name).HasColumnType("nvarchar(128)").IsRequired(false);
+            modelBuilder.Entity<Crew>().Property(c => c.ProfilePath).HasColumnType("nvarchar(2084)").IsRequired(false);
+
+            // MovieCrew
+            modelBuilder.Entity<MovieCrew>().Property(mc => mc.Department).HasColumnType("nvarchar(128)").IsRequired(false);
+            modelBuilder.Entity<MovieCrew>().Property(mc => mc.Job).HasColumnType("nvarchar(128)").IsRequired(false);
+
         }
     }
 }
